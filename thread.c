@@ -88,53 +88,75 @@ void *mainThread(void *arg0)
     GPIO_setPinBajo(PUERTO1,LEDROJO);
 
     while(1)
-    {
+     {
 
-        if ( Gpio_Pin_in(BOTON2) != 1)                // ENTRA AL PRESIONAR EL SWITCH DEL PUERTO P1.4 (CUANDO ESTA EN BAJO)
-                {
-                GPIO_setPinBajo(PUERTO1,LEDROJO);
-                    if(bandera == FALSE)
-                        {
-                            bandera = TRUE;                                 //BANDERA EN ALTO
-                            while (bandera==TRUE){
-                                GPIO_setPinBajo(PUERTO2, LEDAZUL);    //APAGA BLUE
-                                GPIO_setPinAlto(PUERTO2, LEDROJO);    //ENCIENDE RED
-                                for(i=RETARDO; i>0 ;i--);
-                                GPIO_setPinBajo(PUERTO2, LEDROJO);    //APAGA RED
-                                GPIO_setPinAlto(PUERTO2, LEDVERDE);    //ENCIENDE GREEN
-                                for(i=RETARDO; i>0 ;i--);
-                                GPIO_setPinBajo(PUERTO2, LEDVERDE);    //APAGA GREEN
-                                GPIO_setPinAlto(PUERTO2, LEDAZUL);    //ENCIENDE BLUE
-
-                             if ( Gpio_Pin_in(BOTON1) != 1) bandera=FALSE;    // ENTRA CUANDO PRESIONAMOS BOTON DE P1.4
-                             while( Gpio_Pin_in(BOTON1) != 1);                //MIENTRAS ESTE PRESIONADO EL BOTON
-                            }
-                        }
-                 GPIO_setPinBajo(PUERTO2,  LEDROJO |  LEDVERDE | LEDAZUL);  //APAGA TODOS
-                }
-
-        if ( Gpio_Pin_in(BOTON1) != 1)                // ENTRA AL PRESIONAR EL SWITCH DEL PUERTO P1.4 (CUANDO ESTA EN BAJO)
-                {
-            GPIO_setPinBajo(PUERTO2,  LEDROJO |  LEDVERDE | LEDAZUL);  //APAGA TODOS
-                              if(bandera == FALSE)
-                                  {
-                                  cuco++;
-                                      bandera = TRUE;                                 //BANDERA EN ALTO
-
-                                          GPIO_setPinAlto(PUERTO1,LEDROJO);
-
-
-                                      if(cuco==2){
-                                          GPIO_setPinBajo(PUERTO1,LEDROJO);
-                                          cuco=0;
-                                      }
-                                  }
+         if ( Gpio_Pin_in(BOTON2) != 1)                // ENTRA AL PRESIONAR EL SWITCH DEL PUERTO P1.4 (CUANDO ESTA EN BAJO)
+                 {
+                 GPIO_setPinBajo(PUERTO1,LEDROJO);
+                     if(bandera == FALSE)
+                         {
+                             bandera = TRUE;                                 //BANDERA EN ALTO
+                             while (bandera==TRUE){
+                                 GPIO_setPinBajo(PUERTO2, LEDAZUL);    //APAGA BLUE
+                                 GPIO_setPinAlto(PUERTO2, LEDROJO);    //ENCIENDE RED
+                                 for(i=RETARDO; i>0 ;i--);
+                                 GPIO_setPinBajo(PUERTO2, LEDROJO);    //APAGA RED
+                                 GPIO_setPinAlto(PUERTO2, LEDVERDE);    //ENCIENDE GREEN
+                                 for(i=RETARDO; i>0 ;i--);
+                                 GPIO_setPinBajo(PUERTO2, LEDVERDE);    //APAGA GREEN
+                                 GPIO_setPinAlto(PUERTO2, LEDAZUL);    //ENCIENDE BLUE
 
                               if ( Gpio_Pin_in(BOTON2) != 1) bandera=FALSE;    // ENTRA CUANDO PRESIONAMOS BOTON DE P1.4
                               while( Gpio_Pin_in(BOTON2) != 1);                //MIENTRAS ESTE PRESIONADO EL BOTON
-                }
+                              if ( Gpio2_Pin_in(BOTON3) != 1) bandera=FALSE;    // ENTRA CUANDO PRESIONAMOS BOTON DE P1.4
+                               while( Gpio2_Pin_in(BOTON3) != 1);                //MIENTRAS ESTE PRESIONADO EL BOTON
+                             }
+                         }
+                  GPIO_setPinBajo(PUERTO2,  LEDROJO |  LEDVERDE | LEDAZUL);  //APAGA TODOS
+                 }
 
-    }
+         if ( Gpio_Pin_in(BOTON1) != 1)                // ENTRA AL PRESIONAR EL SWITCH DEL PUERTO P1.4 (CUANDO ESTA EN BAJO)
+                 {
+             GPIO_setPinBajo(PUERTO2,  LEDROJO |  LEDVERDE | LEDAZUL);  //APAGA TODOS
+                               if(bandera == FALSE)
+                                   {
+                                   cuco++;
+                                       bandera = TRUE;                                 //BANDERA EN ALTO
+
+                                           GPIO_setPinAlto(PUERTO1,LEDROJO);
+
+
+                                       if(cuco==2){
+                                           GPIO_setPinBajo(PUERTO1,LEDROJO);
+                                           cuco=0;
+                                       }
+                                   }
+
+                               if ( Gpio_Pin_in(BOTON1) != 1) bandera=FALSE;    // ENTRA CUANDO PRESIONAMOS BOTON DE P1.4
+                               while( Gpio_Pin_in(BOTON1) != 1);                //MIENTRAS ESTE PRESIONADO EL BOTON
+                 }
+         if ( Gpio2_Pin_in(BOTON3) != 1)                // ENTRA AL PRESIONAR EL SWITCH DEL PUERTO P1.4 (CUANDO ESTA EN BAJO)
+                       {
+                   GPIO_setPinBajo(PUERTO2,  LEDROJO |  LEDVERDE | LEDAZUL);  //APAGA TODOS
+                                     if(bandera == FALSE)
+                                         {
+                                         cuco++;
+                                             bandera = TRUE;                                 //BANDERA EN ALTO
+
+                                                 GPIO_setPinAlto(PUERTO1,LEDROJO);
+
+
+                                             if(cuco==2){
+                                                 GPIO_setPinBajo(PUERTO1,LEDROJO);
+                                                 cuco=0;
+                                             }
+                                         }
+
+                                     if ( Gpio2_Pin_in(BOTON3) != 1) bandera=FALSE;    // ENTRA CUANDO PRESIONAMOS BOTON DE P1.4
+                                     while( Gpio2_Pin_in(BOTON3) != 1);                //MIENTRAS ESTE PRESIONADO EL BOTON
+                       }
+
+     }
 
 }
 

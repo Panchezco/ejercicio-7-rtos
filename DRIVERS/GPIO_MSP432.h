@@ -19,7 +19,7 @@
  * Alfredo Chacon y el TecNM /IT Chihuahua no son responsables del mal uso de este material.
  *************************************************************************************************/
 #ifndef GPIO_MSP432_H_
-#define GPIO_MSP432_H_
+#define GPIO_MSP432_H_qwq
 #include <ti/devices/msp432p4xx/inc/msp432p401r.h>
 #include "system.h"
 /* Definiciones para el módulo GPIO. */
@@ -106,6 +106,7 @@
  /*****************************************************************************************
                                       PROTOTIPOS DE FUNCION DE NUESTRO DRIVER
  ******************************************************************************************/
+extern uint8_t Gpio2_Pin_in( uint_fast16_t pin_);
 extern uint8_t Gpio_Pin_in( uint_fast16_t pin_);
 extern void GPIO_setPinSalida(uint_fast8_t selectedPort,                      uint_fast16_t selectedPins);
 extern void GPIO_setPinAlto(uint_fast8_t selectedPort,                  uint_fast16_t selectedPins);

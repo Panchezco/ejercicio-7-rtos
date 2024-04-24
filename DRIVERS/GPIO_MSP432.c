@@ -43,6 +43,7 @@ static const uint32_t GPIO_PORT_TO_BASE[] =
 DECLARACION DE APUNTADORES PARA ACCESO A MEMORIA PARA LA FUNCION Gpio_Pin_in
  ************************************************/
   volatile uint8_t *const p1_in  = (uint8_t*)0x040004c00;
+  volatile uint8_t *const p2_in  = (uint8_t*)0x040004c01;
 
 /***************************************************************************************
  *
@@ -67,7 +68,21 @@ uint8_t Gpio_Pin_in( uint_fast16_t pin_)
         return (0x00);
 }
 
-
+/*****************************************************************************
+ * Function: Gpio_Pin_in2
+ * Preconditions: ES SOLO PARA EL PUERTO2 SELECCIONADO.
+ * Overview: LEE EL PIN DESEADO
+ * Input: pin_.
+ * Output: 0/1
+******************************************************************************/
+uint8_t Gpio2_Pin_in( uint_fast16_t pin_)
+{
+uint_fast16_t inputPinValue;
+inputPinValue = *p2_in & (pin_);       // LEE EL REGISTRO QUE INDICA EL VALOR DE ENTRADA DE UN PIN
+if (inputPinValue > 0)                          // RETORNA EL VALOR 1 o 0
+return (0x01);
+return (0x00);
+}
 /******************************************************************************
  * Function: GPIO_setPinSalida
  * Preconditions: None.
