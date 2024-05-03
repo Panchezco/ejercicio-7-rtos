@@ -2,14 +2,14 @@
  *  FileName:        BSP.h
  *  Dependencies:    None.
  *  Processor:       MSP432
- *  Board:			 MSP432P401R
+ *  Board:           MSP432P401R
  *  Program version: CCS V10.4 TI
  *  Company:         TecNM /IT Chihuahua
- *  Description:     Incluye la capa de abstracción de los drivers.
+ *  Description:     Incluye la capa de abstraccion de los drivers.
  *  Authors:         Alfredo Chacon
- *   Created on:     6 mar. 2021
- *   Updated:        11/2021
-  ***************************************************************************/
+ *   Created on:     18 nov. 2021
+ *   Updated:
+  **/
 /************************************************************************************************
  * * Copyright (C) 2021 by Alfredo Chacon - TecNM /IT Chihuahua
  *
@@ -20,30 +20,31 @@
  *************************************************************************************************/
 #ifndef BSP_H_
 #define BSP_H_
+// Si hay problemas con los 'includes', busque la direccion o ruta.
+//#include <C:/ti_v10_1/ccs/ccs_base/arm/include/msp.h>
+#include "DRIVERS\gpio_2021.h"
 
-//#include "msp.h"
-// Si hay problemas con los 'includes', busque la siguiente dirección.
-//#include <ti/devices/msp432p4xx/inc/msp432p401r.h>
-#include "../Drivers/GPIO_MSP432.h"
-/* Definición de botones con su respectivo puerto. */
+/* DefiniciÃ³n de botones con su respectivo puerto. */
+//Definiciones de Puertos
+#define PUERTO1    1
+#define PUERTO2    2
+#define PUERTO3    2
+#define PUERTO4    4
+#define PUERTO5    5
 
+#define BOTON2    0x10
+#define BOTON1   0x02
+#define BOTON3   (0x0008)
+#define GPIO_PIN4    (0x0010)
+#define GPIO_PIN5    (0x0020)
+#define GPIO_PIN6    (0x0040)
+#define GPIO_PIN7    (0x0080)
 
-/* Definición de led's plasmados en tarjeta con su respectivo puerto. */
+/* DefiniciÃ³n de led's plasmados en tarjeta con su respectivo puerto. */
+//Definiciones de pines para las funciones
+#define LEDROJO     (0x0001)
+#define LEDVERDE    (0x0002)
+#define LEDAZUL     (0x0004)
 
-/* Definiciones del estado 'normal' de los botones externos a la tarjeta (solo hay dos botones). */
-#define GND 0
-#define VCC 1
-
-/************************************************
-  DEFINICIONES DE CONSTANTES Y/O MASCARAS DE MAIN
- ************************************************/
-#define RETARDO (100000)
-#define RETARDO2 (10000)
-#define PIN0    (0x01)  //definimos el numero Hexadecimal segun el Pin del PUERTO
-#define PIN1    (0x02)
-#define PIN2    (0x04)
-#define PIN4    (0x10)
-#define FALSE   0
-#define TRUE    1
 
 #endif /* BSP_H_ */
